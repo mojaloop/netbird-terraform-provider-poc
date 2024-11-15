@@ -102,6 +102,7 @@ func (r *setupKeyResource) Read(ctx context.Context, req resource.ReadRequest, r
 	}
 	setupKey.ExpiresIn = data.ExpiresIn
 	setupKey.RotationId = data.RotationId
+	setupKey.Key = data.Key
 	resp.Diagnostics.Append(resp.State.Set(ctx, &setupKey)...)
 }
 
@@ -137,6 +138,7 @@ func (r *setupKeyResource) Update(ctx context.Context, req resource.UpdateReques
 	}
 	setupKey.ExpiresIn = plan.ExpiresIn
 	setupKey.RotationId = plan.RotationId
+	setupKey.Key = state.Key
 	resp.Diagnostics.Append(resp.State.Set(ctx, &setupKey)...)
 }
 
